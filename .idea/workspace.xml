@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2824943-2cf3-435d-8637-eb6138d617f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -135,12 +134,20 @@
       <workItem from="1571774365979" duration="888000" />
       <workItem from="1571810058627" duration="269000" />
       <workItem from="1572020686339" duration="881000" />
-      <workItem from="1572031746521" duration="479000" />
+      <workItem from="1572031746521" duration="743000" />
     </task>
+    <task id="LOCAL-00001" summary="first commit - prompted by IDE to save untracked files">
+      <created>1572032416227</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1572032416227</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2517000" />
+    <option name="totallyTimeSpent" value="2781000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -161,9 +168,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49946696" visible="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" visible="true" weight="0.32827735" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.32827735" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" weight="0.32936078" />
@@ -181,6 +188,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit - prompted by IDE to save untracked files" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit - prompted by IDE to save untracked files" />
   </component>
   <component name="masterDetails">
     <states>
