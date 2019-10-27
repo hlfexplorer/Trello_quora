@@ -75,13 +75,15 @@ public class UserController {
    //username:password of the String is encoded to Base64 format in the authorization header
     //For example, a username of ‘ArchanaA’ and a password of ‘12345’ becomes the string ‘ArchanaA:12345’
     // and then this string is encoded to Base64 format to ‘QXJjaGFuYUE6MTIzNDU=’
+    //Since this is basic authentication the format of authorization header is Basic QXJjaGFuYUE6MTIzNDU=
 
     @RequestMapping(method = RequestMethod.POST, path = "/user/signin", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SigninResponse> userSignin(@RequestHeader("authorization") final String authorization) throws AuthenticationFailedException {
 
         // The encoded Base64 format string has to be decoded to a separate string of username and password
         // and need to pass as arguments to the authenticate method for calling the business logic
-        byte[] decode = Base64.getDecoder().decode(authorization);
+        byte[] decode = Base64.getDecoder().decode(authorization.split("Basic ")[1]);
+        //byte[] decode = Base64.getDecoder().decode(authorization);
         String decodedText = new String(decode);
         String[] decodedArray = decodedText.split(":");
 
