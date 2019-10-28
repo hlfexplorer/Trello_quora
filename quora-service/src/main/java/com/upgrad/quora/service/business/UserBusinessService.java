@@ -45,7 +45,13 @@ public class UserBusinessService {
             userEntity.setPassword(encryptedText[1]);
             return userDao.createUser(userEntity);
         }
+
+
+    public UserEntity getUser(String userUuid, String s) {
+        UserEntity userEntity = null;
+        return userEntity;
     }
+}
 
 
 
