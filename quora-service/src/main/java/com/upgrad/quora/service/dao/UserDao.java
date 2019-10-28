@@ -76,6 +76,9 @@ public class UserDao {
     }
 
 
-
+    public UserEntity getUserByID(String userUuid) {
+        UserEntity userEntity = null;
+        return userEntity;
+    }
 }
 

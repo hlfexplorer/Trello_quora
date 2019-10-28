@@ -1,13 +1,16 @@
 package com.upgrad.quora.service.business;
 
 import com.upgrad.quora.service.dao.UserDao;
+import com.upgrad.quora.service.entity.UserAuthTokenEntity;
 import com.upgrad.quora.service.entity.UserEntity;
+import com.upgrad.quora.service.exception.AuthorizationFailedException;
 import com.upgrad.quora.service.exception.SignUpRestrictedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 /** comments by Archana **/
@@ -46,10 +49,28 @@ public class UserBusinessService {
             return userDao.createUser(userEntity);
         }
 
+        //Comments by Avia
+        //The below method checks if the user was signed in and if the token is expired
 
-    public UserEntity getUser(String userUuid, String s) {
-        UserEntity userEntity = null;
-        return userEntity;
+    public UserEntity getUser(final String userUuid,final String authorizationToken) throws AuthorizationFailedException {
+        UserAuthTokenEntity userAuthTokenEntity = userDao.getUserAuthToken(authorizationToken);
+        if(userAuthTokenEntity == null){
+            throw new AuthorizationFailedException("ATHR-001","User has not signed in");
+        }
+
+        else {
+            ZonedDateTime expiry = userAuthTokenEntity.getExpiresAt();
+            ZonedDateTime now = ZonedDateTime.now();
+            Boolean isExpired = now.isAfter(expiry);
+            if(isExpired){
+                throw new AuthorizationFailedException("ATHR-002","User is signed out.Sign in first to get user details");
+            }
+            else{
+                UserEntity userEntity =  userDao.getUserByID(userUuid);
+                return userEntity;
+            }
+        }
+
     }
 }
 
