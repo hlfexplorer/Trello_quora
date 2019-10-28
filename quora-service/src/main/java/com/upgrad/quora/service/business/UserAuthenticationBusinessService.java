@@ -5,6 +5,7 @@ import com.upgrad.quora.service.dao.UserDao;
 import com.upgrad.quora.service.entity.UserAuthTokenEntity;
 import com.upgrad.quora.service.entity.UserEntity;
 import com.upgrad.quora.service.exception.AuthenticationFailedException;
+import com.upgrad.quora.service.exception.SignOutRestrictedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -22,7 +23,8 @@ public class UserAuthenticationBusinessService {
 
     @Autowired
     PasswordCryptographyProvider cryptographyProvider;
-   //This method authenticates the user by validating the login details username and password against the information stored in
+
+    //This method authenticates the user by validating the login details username and password against the information stored in
     //the database
     @Transactional(propagation = Propagation.REQUIRED)
     public UserAuthTokenEntity authenticate(final String userName, final String password) throws AuthenticationFailedException {
@@ -61,4 +63,21 @@ public class UserAuthenticationBusinessService {
 
     }
 
-}
+
+    /** comments by Archana **/
+// This method authorizes the authenticated user for signout endpoint with the securitytoken(accesstoken)
+    @Transactional(propagation = Propagation.REQUIRED)
+    public UserAuthTokenEntity signOut(final String bearerAcccessToken) throws SignOutRestrictedException, NullPointerException {
+        UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(bearerAcccessToken);
+        //if the access token doesnt exist in the database it will throw an error with below message
+        //else if the access token exists in the database the logout time will be updated and persisted in the database
+        if (userAuthToken == null) {
+            throw new SignOutRestrictedException("SGR-001", "User is not Signed in");
+        } else {
+                final ZonedDateTime now = ZonedDateTime.now();
+                userAuthToken.setLogoutAt(now);
+                userDao.updateUserLogoutAt(userAuthToken);
+                return userAuthToken;
+            }
+        }
+    }
