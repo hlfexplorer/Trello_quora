@@ -62,7 +62,6 @@ public class UserDao {
         try {
             return entityManager.createNamedQuery("userAuthTokenByAccessToken", UserAuthTokenEntity.class).setParameter("accessToken", accessToken).getSingleResult();
         } catch (NoResultException nre) {
-
             return null;
         }
     }
@@ -75,10 +74,28 @@ public class UserDao {
         entityManager.merge(updateUserLogoutAt);
     }
 
+    /** comments by Archana **/
+    //This method retrieves the user based on user uuid, if found returns user else null
+    public UserEntity getUserByUuid(final String uuid) {
+        try {
+            return entityManager.createNamedQuery("userByUuid", UserEntity.class).setParameter("uuid", uuid).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    /** comments by Archana **/
+   //This method deletes the user record from database
+    public void deleteUser(final UserEntity userEntity) {
+        entityManager.remove(userEntity);
+    }
 
     public UserEntity getUserByID(String userUuid) {
         UserEntity userEntity = null;
         return userEntity;
     }
 }
+
+
+
 
