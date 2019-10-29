@@ -1,3 +1,32 @@
 out/
 target/
 .idea/
+ .idea/dataSources.local.xml
+        .idea/dataSources/
+        quora-api/target/classes/com/upgrad/quora/api/controller/AdminController.class
+        quora-api/target/test-classes/
+        quora-db/target/
+        quora-service/target/
+        .idea/workspace.xml
+ quora-db/target/classes/config/localhost.properties
+        quora-db/target/classes/sql/quora.sql
+        quora-db/target/classes/sql/quora_test.sql
+        quora-service/target/classes/com/upgrad/quora/service/ServiceConfiguration.class
+        quora-service/target/classes/com/upgrad/quora/service/business/JwtTokenProvider.class
+        quora-service/target/classes/com/upgrad/quora/service/business/PasswordCryptographyProvider.class
+        quora-service/target/classes/com/upgrad/quora/service/common/ErrorCode.class
+        quora-service/target/classes/com/upgrad/quora/service/common/GenericErrorCode.class
+
+        quora-service/target/classes/com/upgrad/quora/service/common/UnexpectedException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/AnswerNotFoundException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/AuthenticationFailedException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/AuthorizationFailedException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/InvalidQuestionException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/SignOutRestrictedException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/SignUpRestrictedException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/UserNotFoundException.class
+        quora-service/target/maven-archiver/pom.properties
+        quora-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+        quora-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+        quora-service/target/quora-service-1.0-SNAPSHOT.jar
+
