@@ -5,6 +5,7 @@ import com.upgrad.quora.service.entity.UserAuthTokenEntity;
 import com.upgrad.quora.service.entity.UserEntity;
 import com.upgrad.quora.service.exception.AuthorizationFailedException;
 import com.upgrad.quora.service.exception.SignUpRestrictedException;
+import com.upgrad.quora.service.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -49,26 +50,31 @@ public class UserBusinessService {
             return userDao.createUser(userEntity);
         }
 
-        //Comments by Avia
-        //The below method checks if the user was signed in and if the token is expired
+    /** comments by Avia **/
+        //The below method checks if the user was assigned a token (i.e. if the user is signed in) and if the assigned token is expired.
+        //If the token is valid, the method returns the corresponding user entity.
 
-    public UserEntity getUser(final String userUuid,final String authorizationToken) throws AuthorizationFailedException {
+    public UserEntity getUser(final String userUuid,final String authorizationToken) throws AuthorizationFailedException, UserNotFoundException {
+
         UserAuthTokenEntity userAuthTokenEntity = userDao.getUserAuthToken(authorizationToken);
+        //If the userAuthTokenEntity returns null, it implies the token doesn't exist hence the user is not signed in and wasn't assigned a token
         if(userAuthTokenEntity == null){
             throw new AuthorizationFailedException("ATHR-001","User has not signed in");
         }
-
+        //If the token is valid, we need to check if it's expired or not by comparing the current time with the previously set token expiry time.
         else {
-            ZonedDateTime expiry = userAuthTokenEntity.getExpiresAt();
-            ZonedDateTime now = ZonedDateTime.now();
-            Boolean isExpired = now.isAfter(expiry);
-            if(isExpired){
-                throw new AuthorizationFailedException("ATHR-002","User is signed out.Sign in first to get user details");
-            }
-            else{
-                UserEntity userEntity =  userDao.getUserByID(userUuid);
+            ZonedDateTime logout = userAuthTokenEntity.getLogoutAt();
+            if (logout==null){
+                UserEntity userEntity =  userDao.getUserByUuid(userUuid);
+                if (userEntity == null) {
+                    throw new UserNotFoundException("USR-001", "User with entered uuid to be deleted does not exist");
+                }
                 return userEntity;
             }
+            else{
+                throw new UserNotFoundException("USR-001", "User with entered uuid to be deleted does not exist");
+            }
+            
         }
 
     }

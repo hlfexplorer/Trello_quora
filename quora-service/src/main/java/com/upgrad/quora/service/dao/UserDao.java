@@ -90,10 +90,6 @@ public class UserDao {
         entityManager.remove(userEntity);
     }
 
-    public UserEntity getUserByID(String userUuid) {
-        UserEntity userEntity = null;
-        return userEntity;
-    }
 }
 
 
