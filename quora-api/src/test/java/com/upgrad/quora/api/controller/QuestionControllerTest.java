@@ -1,4 +1,4 @@
-/*package com.upgrad.quora.api.controller;
+package com.upgrad.quora.api.controller;
 
 
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class QuestionControllerTest {
     @Autowired
     private MockMvc mvc;
 
-
+/**
     //This test case passes when you try to create the question but the JWT token entered does not exist in the database.
     @Test
     public void createQuestionWithNonExistingAccessToken() throws Exception {
@@ -95,6 +95,8 @@ public class QuestionControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("code").value("QUES-001"));
     }
 
+    **/
+
     //This test case passes when you try to delete the question but the JWT token entered does not exist in the database.
     @Test
     public void deleteQuestionWithNonExistingAccessToken() throws Exception {
@@ -127,7 +129,7 @@ public class QuestionControllerTest {
                 .andExpect(status().isNotFound())
                 .andExpect(MockMvcResultMatchers.jsonPath("code").value("QUES-001"));
     }
-
+/**
     //This test case passes when you try to get all the questions posted by a specific user but the JWT token entered does not exist in the database.
     @Test
     public void getAllQuestionsByUserWithNonExistingAccessToken() throws Exception {
@@ -151,7 +153,7 @@ public class QuestionControllerTest {
                 .andExpect(status().isNotFound())
                 .andExpect(MockMvcResultMatchers.jsonPath("code").value("USR-001"));
     }
-
+**/
 
 }
-*/
+
