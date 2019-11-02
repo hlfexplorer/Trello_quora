@@ -63,19 +63,17 @@ public class QuestionController {
         }catch(ArrayIndexOutOfBoundsException are) {
             listOfQuestions = questionBusinessService.getAllQuestions(authorization);
         }
-           //for(QuestionEntity question:  displayAllQuestions)
+
        // QuestionDetailsResponse questionDetailsResponse = new QuestionDetailsResponse();
-        ListIterator<QuestionEntity> questions = listOfQuestions.listIterator();
+       // ListIterator<QuestionEntity> questions = listOfQuestions.listIterator();
         List<QuestionDetailsResponse> displayQuestionIdAndContent = new ArrayList<>();
-       while(questions.hasNext()) {
-       // for(int i =0; i<listOfQuestions.size();i++) {
-            QuestionDetailsResponse questionDetailsResponse = new QuestionDetailsResponse();
-            questionDetailsResponse.id(questions.next().getUuid());
-            questionDetailsResponse.content(questions.next().getContent());
+        for(QuestionEntity question:  listOfQuestions){
+            QuestionDetailsResponse questionDetailsResponse = new QuestionDetailsResponse().id(question.getUuid()).
+                    content(question.getContent());
+
             displayQuestionIdAndContent.add(questionDetailsResponse);
          }
         return new ResponseEntity<List<QuestionDetailsResponse>>(displayQuestionIdAndContent, HttpStatus.OK);
-
     }
 
 
