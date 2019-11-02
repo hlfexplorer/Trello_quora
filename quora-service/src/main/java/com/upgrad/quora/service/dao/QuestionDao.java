@@ -6,12 +6,25 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class QuestionDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+    public QuestionEntity persistQuestion(final QuestionEntity questionEntity) {
+        entityManager.persist(questionEntity);
+        return questionEntity;
+    }
+
+    public List<QuestionEntity> getAllQuestions(){
+        try{
+            return entityManager.createNamedQuery("ListofAllQuestions", QuestionEntity.class).getResultList();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
 
     /** comments by Archana **/
     //This method retrieves the question based on question uuid, if found returns question else null
