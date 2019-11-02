@@ -10,14 +10,18 @@ import java.util.List;
 
 @Repository
 public class QuestionDao {
+    //This annotation PersistenceContext handles a set of entities that hold data to be persisted in the database
     @PersistenceContext
     private EntityManager entityManager;
-
+    /** comments by Archana **/
+    //This method persists the newly created question entity in the database
     public QuestionEntity persistQuestion(final QuestionEntity questionEntity) {
         entityManager.persist(questionEntity);
         return questionEntity;
     }
 
+    /** comments by Archana **/
+   //This method retrieves all the list of questions from the database
     public List<QuestionEntity> getAllQuestions(){
         try{
             return entityManager.createNamedQuery("ListofAllQuestions", QuestionEntity.class).getResultList();
