@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Service
 public class QuestionBusinessService {
@@ -23,7 +24,50 @@ public class QuestionBusinessService {
     @Autowired
     QuestionDao questionDao;
 
-@Transactional(propagation = Propagation.REQUIRED)
+    /**
+    public Boolean checkUserSignInSignOutStatus(final String accessToken, ZonedDateTime logoutTime) {
+        UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(accessToken);
+        if(userAuthToken == null) {
+            throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
+        }
+        ZonedDateTime logoutTime = userAuthToken.getLogoutAt();
+        if(logoutTime!= null) {
+            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to delete a question");
+        }
+    }
+     **/
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public QuestionEntity postQuestion(final QuestionEntity questionEntity, final String accessToken) throws AuthorizationFailedException{
+        UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(accessToken);
+        if(userAuthToken == null) {
+            throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
+        }
+        ZonedDateTime logoutTime = userAuthToken.getLogoutAt();
+        if(logoutTime!= null) {
+            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to delete a question");
+        }
+        questionEntity.setUser(userAuthToken.getUser());
+        return questionDao.persistQuestion(questionEntity);
+    }
+
+
+      public List<QuestionEntity> getAllQuestions(final String accessToken) throws AuthorizationFailedException {
+          UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(accessToken);
+          if(userAuthToken == null) {
+              throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
+          }
+          ZonedDateTime logoutTime = userAuthToken.getLogoutAt();
+          if(logoutTime!= null) {
+              throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to delete a question");
+          }
+          return questionDao.getAllQuestions();
+      }
+
+
+
+
+    @Transactional(propagation = Propagation.REQUIRED)
    public String deleteQuestion(final String questionUuid, final String accessToken) throws AuthorizationFailedException, InvalidQuestionException {
        UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(accessToken);
 
