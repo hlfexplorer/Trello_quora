@@ -33,7 +33,9 @@ import java.time.ZonedDateTime;
 @Table(name = "QUESTION", schema = "public")
 
 @NamedQueries({
-        @NamedQuery(name = "QuestionByUuid", query = "select q from QuestionEntity q where q.uuid = :uuid ")
+        @NamedQuery(name = "QuestionByUuid", query = "select q from QuestionEntity q where q.uuid = :uuid "),
+        @NamedQuery(name = "ListofAllQuestions", query = "select q from QuestionEntity q ")
+
 })
 public class QuestionEntity implements Serializable {
 
