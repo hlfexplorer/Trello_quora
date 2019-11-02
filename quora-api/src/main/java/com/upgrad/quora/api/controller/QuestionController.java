@@ -39,8 +39,7 @@ public class QuestionController {
         questionEntity.setContent(questionRequest.getContent());
         questionEntity.setDate(ZonedDateTime.now());
       //The accesstoken can be of any form, Bearer<accessToken> or <accessToken>
-
-        QuestionEntity  createdQuestionEntity;
+          QuestionEntity  createdQuestionEntity;
         try{
             String[] bearerAccessToken = authorization.split("Bearer ");
             createdQuestionEntity = questionBusinessService.postQuestion(questionEntity, bearerAccessToken[1]);
@@ -54,6 +53,8 @@ public class QuestionController {
     }
 
     /**Commets by Archana **/
+    //This endpoint is see all the questions posted in the quora application
+    //This endpoint is accessed by any user by just providing the access token as input in the authorization header
     @RequestMapping(method = RequestMethod.GET, path ="/question/all", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<List<QuestionDetailsResponse>> getAllQuestions(@RequestHeader("authorization") final String authorization) throws AuthorizationFailedException{
         List<QuestionEntity> listOfQuestions = new ArrayList<>();
@@ -73,6 +74,7 @@ public class QuestionController {
 
             displayQuestionIdAndContent.add(questionDetailsResponse);
          }
+        //This method returns QuestionDetailsResponse object along with httpStatus
         return new ResponseEntity<List<QuestionDetailsResponse>>(displayQuestionIdAndContent, HttpStatus.OK);
     }
 
@@ -82,7 +84,6 @@ public class QuestionController {
     //This endpoint requests for the questionUuid to be deleted and the questionowner or admin accesstoken in the authorization header
     @RequestMapping(method = RequestMethod.DELETE, path = "/question/delete/{questionId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<QuestionDeleteResponse> deleteQuestion(@PathVariable("questionId") final String questionUuid, @RequestHeader("authorization") final String authorization)throws AuthorizationFailedException, InvalidQuestionException {
-
         String uuid ;
         try {
             String[] accessToken = authorization.split("Bearer ");
