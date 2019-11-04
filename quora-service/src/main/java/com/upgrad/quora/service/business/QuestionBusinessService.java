@@ -24,19 +24,11 @@ public class QuestionBusinessService {
     @Autowired
     QuestionDao questionDao;
 
-    /**
-    public Boolean checkUserSignInSignOutStatus(final String accessToken, ZonedDateTime logoutTime) {
-        UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(accessToken);
-        if(userAuthToken == null) {
-            throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
-        }
-        ZonedDateTime logoutTime = userAuthToken.getLogoutAt();
-        if(logoutTime!= null) {
-            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to delete a question");
-        }
-    }
-     **/
 
+    /** comments by Archana **/
+    //This method receives questionEntity and accessToken as input parameters for creating the question, but before that
+    // two checks are done whether a user is signedin or signedout. After successfull validation the question will be persisted
+    //in the database by calling persistQuestion() method of QuestionDao
     @Transactional(propagation = Propagation.REQUIRED)
     public QuestionEntity postQuestion(final QuestionEntity questionEntity, final String accessToken) throws AuthorizationFailedException{
         UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(accessToken);
@@ -45,13 +37,15 @@ public class QuestionBusinessService {
         }
         ZonedDateTime logoutTime = userAuthToken.getLogoutAt();
         if(logoutTime!= null) {
-            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to delete a question");
+            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to post a question");
         }
         questionEntity.setUser(userAuthToken.getUser());
         return questionDao.persistQuestion(questionEntity);
     }
 
-
+    /** comments by Archana **/
+    //This method fetches all the questions that are posted in the application, but before that two checks are done
+    //whether a user is signedin or signedout. After successfull validation, a user can view all the list of questions
       public List<QuestionEntity> getAllQuestions(final String accessToken) throws AuthorizationFailedException {
           UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(accessToken);
           if(userAuthToken == null) {
@@ -59,7 +53,7 @@ public class QuestionBusinessService {
           }
           ZonedDateTime logoutTime = userAuthToken.getLogoutAt();
           if(logoutTime!= null) {
-              throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to delete a question");
+              throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to get all questions");
           }
           return questionDao.getAllQuestions();
       }
