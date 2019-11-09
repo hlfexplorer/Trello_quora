@@ -51,34 +51,27 @@ public class UserBusinessService {
         }
 
     /** comments by Avia **/
-        //The below method checks if the user was assigned a token (i.e. if the user is signed in) and if the assigned token is expired.
-        //If the token is valid, the method returns the corresponding user entity.
-
+    //The below method checks if the user token is valid.
+    //If the token is valid, the method returns the corresponding user entity.
     public UserEntity getUser(final String userUuid,final String authorizationToken) throws AuthorizationFailedException, UserNotFoundException {
-
-        UserAuthTokenEntity userAuthTokenEntity = userDao.getUserAuthToken(authorizationToken);
-        //If the userAuthTokenEntity returns null, it implies the token doesn't exist hence the user is not signed in and wasn't assigned a token
-        if(userAuthTokenEntity == null){
-            throw new AuthorizationFailedException("ATHR-001","User has not signed in");
+        UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(authorizationToken);
+        if (userAuthToken == null) {
+            throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
         }
-        //If the token is valid, we need to check if it's expired or not by comparing the current time with the previously set token expiry time.
-        else {
-            ZonedDateTime logout = userAuthTokenEntity.getLogoutAt();
-            if (logout==null){
-                UserEntity userEntity =  userDao.getUserByUuid(userUuid);
-                if (userEntity == null) {
-                    throw new UserNotFoundException("USR-001", "User with entered uuid to be deleted does not exist");
-                }
-                return userEntity;
-            }
-            else{
-                throw new UserNotFoundException("USR-001", "User with entered uuid to be deleted does not exist");
-            }
-            
+        ZonedDateTime logoutTime = userAuthToken.getLogoutAt();
+        if(logoutTime!= null) {
+            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to get user details");
         }
+        UserEntity userEntity=userDao.getUserByUuid(userUuid);
+        if (userEntity == null) {
+            throw new UserNotFoundException("USR-001", "User with entered uuid whose question details are to be seen does not exist");
+        }
+        return userEntity;
 
     }
+
 }
+
 
 
 
