@@ -44,7 +44,8 @@ public class UserController {
     @Autowired
     UserAuthenticationBusinessService userAuthenticationBusinessService;
     private String[] bearerAccessToken;
-
+    /** comments by Archana **/
+    //**userSignup**//
     @RequestMapping(method = RequestMethod.POST, path = "/user/signup", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SignupUserResponse> userSignup(final SignupUserRequest signupUserRequest) throws SignUpRestrictedException {
 
@@ -73,6 +74,7 @@ public class UserController {
     }
 
     /** comments by Archana **/
+    //**userSignin**//
     //This method defines the user can login to application after the successfull registration
     //This endpoint requests for the User credentials to be passed in the authorization field of header as part of Basic authentication.
     //username:password of the String is encoded to Base64 format in the authorization header
@@ -97,13 +99,14 @@ public class UserController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("access-token", userAuthToken.getAccessToken());
-        // The Http Status code 200 , the response code HttpStatus.OK and the status message USER SUCCESSFULLY REGISTERED
+        // The Http Status code 200 , the response code HttpStatus.OK and the status message SIGNED IN SUCCESSFULLY
         //returned here are as per the requirement provided in the problem statement
         //This method returns SigninResponse object, access token and Http Status
         return new ResponseEntity<SigninResponse>(authenticatedSigninResponse, headers, HttpStatus.OK);
     }
 
     /** comments by Archana **/
+    //**userSignout**//
     //This endpoint requests for the access token in the authorisation header as a part of Bearer authentication
     @RequestMapping(method = RequestMethod.POST, path = "/user/signout", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SignoutResponse> userSignout(@RequestHeader("authorization") final String authorization)
