@@ -98,3 +98,20 @@ E:\quora_stub\Trello_quora\Trello_quora.iml
            quora-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
           quora-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
           quora-service/target/quora-service-1.0-SNAPSHOT.jar
+.idea/dataSources.local.xml
+        .idea/dataSources/
+        .idea/workspace.xml
+        quora-api/target/classes/com/upgrad/quora/api/controller/AdminController.class
+        quora-api/target/classes/com/upgrad/quora/api/controller/CommonController.class
+        quora-api/target/classes/com/upgrad/quora/api/controller/QuestionController.class
+        quora-api/target/test-classes/
+        quora-db/target/maven-archiver/
+        quora-db/target/maven-status/
+        quora-db/target/quora-db.jar
+        quora-service/target/classes/com/upgrad/quora/service/business/QuestionBusinessService.class
+        quora-service/target/classes/com/upgrad/quora/service/business/UserAdminBusinessService.class
+        quora-service/target/classes/com/upgrad/quora/service/business/UserAuthenticationBusinessService.class
+        quora-service/target/classes/com/upgrad/quora/service/business/UserBusinessService.class
+        quora-service/target/classes/com/upgrad/quora/service/dao/
+        quora-service/target/classes/com/upgrad/quora/service/entity/
+        quora-service/target/maven-status/maven-compiler-plugin/testCompile/
