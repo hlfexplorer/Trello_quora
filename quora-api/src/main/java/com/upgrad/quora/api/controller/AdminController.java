@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /** comments by Archana **/
+//** deleteUser **//
 @RestController
 @RequestMapping("/")
 public class AdminController {
@@ -25,7 +26,6 @@ public class AdminController {
     public ResponseEntity<UserDeleteResponse> deleteUser(@PathVariable("userId") final String userUuidToBeDeleted,@RequestHeader("authorization") final String authorization)
             throws AuthorizationFailedException, UserNotFoundException {
         //The input can be of any form "Bearer <accesstoken>" or "<accesstoken>" in the authorization header
-
         String uuid ;
         try {
             String[] adminUserAccessToken = authorization.split("Bearer ");
