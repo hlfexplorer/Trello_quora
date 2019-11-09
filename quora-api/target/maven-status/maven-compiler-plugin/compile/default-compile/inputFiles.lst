@@ -17,8 +17,10 @@ E:\quora_stub\Trello_quora\quora-api\target\generated-sources\.\io\swagger\api\A
 E:\quora_stub\Trello_quora\quora-api\target\generated-sources\.\com\upgrad\quora\api\model\AnswerDeleteResponse.java
 E:\quora_stub\Trello_quora\quora-api\target\generated-sources\.\com\upgrad\quora\api\model\QuestionEditRequest.java
 E:\quora_stub\Trello_quora\quora-api\target\generated-sources\.\com\upgrad\quora\api\model\AnswerEditRequest.java
+E:\quora_stub\Trello_quora\quora-api\src\main\java\com\upgrad\quora\api\controller\AnswerController.java
 E:\quora_stub\Trello_quora\quora-api\target\generated-sources\.\com\upgrad\quora\api\model\AnswerDetailsResponse.java
 E:\quora_stub\Trello_quora\quora-api\target\generated-sources\.\com\upgrad\quora\api\model\QuestionEditResponse.java
+E:\quora_stub\Trello_quora\quora-api\src\main\java\com\upgrad\quora\api\controller\QuestionController.java
 E:\quora_stub\Trello_quora\quora-api\src\main\java\com\upgrad\quora\api\exception\RestExceptionHandler.java
 E:\quora_stub\Trello_quora\quora-api\target\generated-sources\.\com\upgrad\quora\api\model\SignupUserRequest.java
 E:\quora_stub\Trello_quora\quora-api\target\generated-sources\.\com\upgrad\quora\api\model\QuestionDeleteResponse.java

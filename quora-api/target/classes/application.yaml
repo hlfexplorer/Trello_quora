@@ -12,6 +12,9 @@ spring:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/quora
     username: postgres
+    # password in the original stub
+    # password: password
+    # Changed the password from password to superuser
     password: superuser
 
   jpa:
@@ -19,4 +22,6 @@ spring:
       hibernate:
         temp:
           use_jdbc_metadata_defaults: false
+          # database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+          # Changed the dialect from 9 to 82
     database-platform: org.hibernate.dialect.PostgreSQL82Dialect
