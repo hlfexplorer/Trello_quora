@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/")
-
+/**comments by Avia **/
+//** userProfile **//
 public class CommonController {
 
     @Autowired
@@ -24,9 +25,9 @@ public class CommonController {
     public ResponseEntity<UserDetailsResponse> userProfile(@PathVariable("userId") final String userUuid, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UserNotFoundException {
         UserEntity userEntity;
         try{
-        String[] userToken = authorization.split("Bearer ");
-            userEntity = userBusinessService.getUser(userUuid, userToken[1]);}
-        catch(ArrayIndexOutOfBoundsException e){
+            String[] userToken = authorization.split("Bearer ");
+            userEntity = userBusinessService.getUser(userUuid, userToken[1]);
+        } catch(ArrayIndexOutOfBoundsException e){
             userEntity = userBusinessService.getUser(userUuid, authorization);
         }
 
