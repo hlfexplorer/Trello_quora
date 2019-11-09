@@ -24,6 +24,8 @@ public class UserAuthenticationBusinessService {
     @Autowired
     PasswordCryptographyProvider cryptographyProvider;
 
+    /**Commets by Archana **/
+    //** authenticateToken for signin**//
     //This method authenticates the user by validating the login details username and password against the information stored in
     //the database
     @Transactional(propagation = Propagation.REQUIRED)
@@ -65,6 +67,7 @@ public class UserAuthenticationBusinessService {
 
 
     /** comments by Archana **/
+    //**signOut**//
 // This method authorizes the authenticated user for signout endpoint with the securitytoken(accesstoken)
     @Transactional(propagation = Propagation.REQUIRED)
     public UserAuthTokenEntity signOut(final String bearerAcccessToken) throws SignOutRestrictedException, NullPointerException {
