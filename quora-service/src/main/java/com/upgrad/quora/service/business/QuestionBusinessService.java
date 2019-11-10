@@ -123,6 +123,7 @@ public class QuestionBusinessService {
     //THe method first checks if the user token is valid
     //Next it checks if the user trying to edit is the owner of the question.
     //If the current user is not the owner it throws an exception, else the question is updated
+    @Transactional(propagation = Propagation.REQUIRED)
     public QuestionEntity editQuestion(final QuestionEntity questionEntity, final String accessToken) throws AuthorizationFailedException {
         UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(accessToken);
         if (userAuthToken == null) {
@@ -152,17 +153,17 @@ public class QuestionBusinessService {
     //This method updates the question in the database retrieves all the questions post by a user from the database
 
     public List<QuestionEntity> getAllQuestionsByUser(final String accessToken, String userUuid) throws AuthorizationFailedException, UserNotFoundException {
-        UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(accessToken);
-        if (userAuthToken == null) {
+         UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(accessToken);
+         if (userAuthToken == null) {
             throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
-        }
-        ZonedDateTime logoutTime = userAuthToken.getLogoutAt();
-        if(logoutTime!= null) {
+         }
+         ZonedDateTime logoutTime = userAuthToken.getLogoutAt();
+         if(logoutTime!= null) {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to edit the question");
-        }
-
-        UserEntity userEntity = userBusinessService.getUser(userUuid, accessToken);
-        if (userEntity == null) {
+         }
+         //  UserEntity userEntity = userBusinessService.getUser(userUuid, accessToken);
+        UserEntity userEntity = userDao.getUserByUuid(userUuid);
+         if (userEntity == null) {
             throw new UserNotFoundException("USR-001", "User with entered uuid whose question details are to be seen does not exist");
         }
 

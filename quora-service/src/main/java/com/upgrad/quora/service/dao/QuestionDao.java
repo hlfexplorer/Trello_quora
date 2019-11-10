@@ -57,7 +57,7 @@ public class QuestionDao {
     //This method retrieves all the questions posted by a user and returns null if the list is empty.
     public List<QuestionEntity> getAllQuestionsByUser(final String userUuid){
         try{
-            return entityManager.createNamedQuery("AllQuestionsByUser", QuestionEntity.class).setParameter("user",userUuid).getResultList();
+            return entityManager.createNamedQuery("AllQuestionsByUser", QuestionEntity.class).setParameter("uuid",userUuid).getResultList();
         }
         catch (NoResultException nre){
             return null;

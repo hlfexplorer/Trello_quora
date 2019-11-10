@@ -141,14 +141,22 @@ public class QuestionController {
         catch(Exception e){
             listOfUserQuestions = questionBusinessService.getAllQuestionsByUser(authorization,userUuid);
         }
-
+/**
         ListIterator<QuestionEntity> questions = listOfUserQuestions.listIterator();
         List<QuestionDetailsResponse> displayQuestionIdAndContent = new ArrayList<>();
         while(questions.hasNext()){
             QuestionDetailsResponse questionDetailsResponse = new QuestionDetailsResponse().id(questions.next().getUuid()).content(questions.next().getContent());
             displayQuestionIdAndContent.add(questionDetailsResponse);}
-        return new ResponseEntity<List<QuestionDetailsResponse>>(displayQuestionIdAndContent,HttpStatus.OK);
+ **/
+
+        List<QuestionDetailsResponse> displayUserQuestionIdAndContent = new ArrayList<>();
+        for(QuestionEntity que:  listOfUserQuestions){
+            QuestionDetailsResponse questionDetailsResponse = new QuestionDetailsResponse().id(que.getUuid()).
+                    content(que.getContent());
+
+            displayUserQuestionIdAndContent.add(questionDetailsResponse);
+        }
+        return new ResponseEntity<List<QuestionDetailsResponse>>(displayUserQuestionIdAndContent,HttpStatus.OK);
 
     }
-
 }
