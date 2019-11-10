@@ -115,7 +115,7 @@ public class AnswerBusinessService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public AnswerEntity updateAnswer(final String ansId , final String accessToken)throws AuthorizationFailedException,AnswerNotFoundException
+    public AnswerEntity updateAnswer(final AnswerEntity ansEnt ,final String ansId , final String accessToken)throws AuthorizationFailedException,AnswerNotFoundException
     {
         UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(accessToken);
         AnswerEntity updatedAnswer;
@@ -130,6 +130,7 @@ public class AnswerBusinessService {
         if(answerEntity == null){
             throw new AnswerNotFoundException("ANS-001" , "Entered answer uuid does not exist");
         }
+        answerEntity.setAnswer(ansEnt.getAnswer());
         String ansOwnnerUuid = answerEntity.getUser().getUuid();
         String signedInUserUuid = userAuthToken.getUser().getUuid();
 
