@@ -115,7 +115,7 @@ public class AnswerBusinessService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public AnswerEntity updateAnswer(final AnswerEntity answerEntity ,final String ansId , final String accessToken)throws AuthorizationFailedException
+    public AnswerEntity updateAnswer(final String ansId , final String accessToken)throws AuthorizationFailedException,AnswerNotFoundException
     {
         UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(accessToken);
         AnswerEntity updatedAnswer;
@@ -126,8 +126,13 @@ public class AnswerBusinessService {
         if(logoutTime!= null) {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to get the answers");
         }
+        AnswerEntity answerEntity = answerDao.getAnsById(ansId);
+        if(answerEntity == null){
+            throw new AnswerNotFoundException("ANS-001" , "Entered answer uuid does not exist");
+        }
         String ansOwnnerUuid = answerEntity.getUser().getUuid();
         String signedInUserUuid = userAuthToken.getUser().getUuid();
+
         if(ansOwnnerUuid.equals(signedInUserUuid)) {
              updatedAnswer = answerDao.updateAnswer(answerEntity);
         }
