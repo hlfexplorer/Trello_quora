@@ -54,7 +54,7 @@ public class AnswerBusinessService {
         ansEntity.setUser(userAuthEntity.getUser());
         return answerDao.createAnswer(ansEntity);
     }
-
+/**
     @Transactional(propagation = Propagation.REQUIRED)
     public AnswerEntity getAnswerById(String uuid) throws AnswerNotFoundException {
         AnswerEntity answerEntity = answerDao.getAnsById(uuid);
@@ -64,7 +64,7 @@ public class AnswerBusinessService {
         }
         return answerEntity;
     }
-/**
+
     @Transactional(propagation = Propagation.REQUIRED)
     public AnswerEntity checkAnswerByUser(UserAuthTokenEntity userAuthEntity, AnswerEntity answerEntity) throws AuthorizationFailedException {
 
