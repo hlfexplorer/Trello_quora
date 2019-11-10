@@ -76,12 +76,13 @@ public class AnswerController {
     public ResponseEntity<AnswerEditResponse> editAnswerContent(final AnswerEditRequest answerEditRequest, @PathVariable("answerId") final String answerId,
                                                                 @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, AnswerNotFoundException {
 
-        AnswerEntity updatedAnswer;
+        AnswerEntity updatedAnswer = new AnswerEntity();
+        updatedAnswer.setAnswer(answerEditRequest.getContent());
         try {
             String[] accessToken = authorization.split("Bearer ");
-            updatedAnswer = ansBusinessService.updateAnswer(answerId, accessToken[1]);
+            updatedAnswer = ansBusinessService.updateAnswer(updatedAnswer,answerId, accessToken[1]);
         }catch(ArrayIndexOutOfBoundsException are) {
-            updatedAnswer = ansBusinessService.updateAnswer(answerId, authorization);
+            updatedAnswer = ansBusinessService.updateAnswer(updatedAnswer,answerId, authorization);
         }
         AnswerEditResponse answerEditResponse = new AnswerEditResponse().id(updatedAnswer.getUuid()).status("ANSWER EDITED");
         return new ResponseEntity<AnswerEditResponse>(answerEditResponse,HttpStatus.OK);
