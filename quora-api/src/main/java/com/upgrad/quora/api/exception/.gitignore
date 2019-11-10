@@ -1,0 +1,117 @@
+out/
+target/
+.idea/
+E:\quora_stub\Trello_quora\.idea
+.idea
+lib
+E:\quora_stub\Trello_quora\quora-api\src\main\resources
+E:\quora_stub\Trello_quora\lib
+E:\quora_stub\Trello_quora\quora-api\target
+E:\quora_stub\Trello_quora\quora-db\target
+E:\quora_stub\Trello_quora\quora-service\target
+E:\quora_stub\Trello_quora\Trello_quora.iml
+ .idea/dataSources.local.xml
+        .idea/dataSources/
+        quora-api/target/classes/com/upgrad/quora/api/controller/AdminController.class
+        quora-api/target/test-classes/
+        quora-db/target/
+        quora-service/target/
+        .idea/workspace.xml
+ quora-db/target/classes/config/localhost.properties
+        quora-db/target/classes/sql/quora.sql
+        quora-db/target/classes/sql/quora_test.sql
+        quora-service/target/classes/com/upgrad/quora/service/ServiceConfiguration.class
+        quora-service/target/classes/com/upgrad/quora/service/business/JwtTokenProvider.class
+        quora-service/target/classes/com/upgrad/quora/service/business/PasswordCryptographyProvider.class
+        quora-service/target/classes/com/upgrad/quora/service/common/ErrorCode.class
+        quora-service/target/classes/com/upgrad/quora/service/common/GenericErrorCode.class
+
+        quora-service/target/classes/com/upgrad/quora/service/common/UnexpectedException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/AnswerNotFoundException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/AuthenticationFailedException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/AuthorizationFailedException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/InvalidQuestionException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/SignOutRestrictedException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/SignUpRestrictedException.class
+        quora-service/target/classes/com/upgrad/quora/service/exception/UserNotFoundException.class
+        quora-service/target/maven-archiver/pom.properties
+        quora-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+        quora-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+        quora-service/target/quora-service-1.0-SNAPSHOT.jar
+
+.idea/dataSources.local.xml
+        .idea/dataSources/
+        .idea/workspace.xml
+        quora-api/target/classes/com/upgrad/quora/api/controller/AdminController.class
+        quora-api/target/classes/com/upgrad/quora/api/controller/CommonController.class
+        quora-api/target/classes/com/upgrad/quora/api/controller/QuestionController.class
+        quora-api/target/test-classes/
+        quora-db/target/maven-archiver/
+        quora-db/target/maven-status/
+        quora-db/target/quora-db.jar
+        quora-service/target/classes/META-INF/
+        quora-service/target/classes/com/upgrad/quora/service/business/QuestionBusinessService.class
+        quora-service/target/classes/com/upgrad/quora/service/business/UserAdminBusinessService.class
+        quora-service/target/classes/com/upgrad/quora/service/business/UserAuthenticationBusinessService.class
+        quora-service/target/classes/com/upgrad/quora/service/business/UserBusinessService.class
+        quora-service/target/classes/com/upgrad/quora/service/dao/
+        quora-service/target/classes/com/upgrad/quora/service/entity/
+        quora-service/target/maven-status/maven-compiler-plugin/testCompile/
+
+    quora-api/target/classes/com/upgrad/quora/api/exception/RestExceptionHandler.class
+           quora-api/target/generated-sources/.swagger-codegen-ignore
+          quora-api/target/generated-sources/README.md
+           quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerDeleteResponse.java
+         quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerDetailsResponse.java
+          quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerEditRequest.java
+           quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerEditResponse.java
+          quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerRequest.java
+           quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerResponse.java
+   quora-api/target/generated-sources/com/upgrad/quora/api/model/ErrorResponse.java
+          quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionDeleteResponse.java
+ quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionDetailsResponse.java
+           quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionEditRequest.java
+           quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionEditResponse.java
+         quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionRequest.java
+          quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionResponse.java
+           quora-api/target/generated-sources/com/upgrad/quora/api/model/SigninResponse.java
+          quora-api/target/generated-sources/com/upgrad/quora/api/model/SignoutResponse.java
+          quora-api/target/generated-sources/com/upgrad/quora/api/model/SignupUserRequest.java
+           quora-api/target/generated-sources/com/upgrad/quora/api/model/SignupUserResponse.java
+           quora-api/target/generated-sources/com/upgrad/quora/api/model/UserDeleteResponse.java
+           quora-api/target/generated-sources/com/upgrad/quora/api/model/UserDetailsResponse.java
+          quora-api/target/generated-sources/io/swagger/RFC3339DateFormat.java
+          quora-api/target/generated-sources/io/swagger/Swagger2SpringBoot.java
+          quora-api/target/generated-sources/io/swagger/api/ApiException.java
+          quora-api/target/generated-sources/io/swagger/api/ApiOriginFilter.java
+          quora-api/target/generated-sources/io/swagger/api/ApiResponseMessage.java
+          quora-api/target/generated-sources/io/swagger/api/NotFoundException.java
+          quora-api/target/generated-sources/io/swagger/configuration/HomeController.java
+         quora-api/target/generated-sources/io/swagger/configuration/SwaggerDocumentationConfig.java
+          quora-api/target/generated-sources/pom.xml
+          quora-api/target/generated-sources/src/main/resources/application.properties
+           quora-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+           quora-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+          quora-api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
+          quora-api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+           quora-api/target/quora-api-1.0-SNAPSHOT.jar
+           quora-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+          quora-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+          quora-service/target/quora-service-1.0-SNAPSHOT.jar
+.idea/dataSources.local.xml
+        .idea/dataSources/
+        .idea/workspace.xml
+        quora-api/target/classes/com/upgrad/quora/api/controller/AdminController.class
+        quora-api/target/classes/com/upgrad/quora/api/controller/CommonController.class
+        quora-api/target/classes/com/upgrad/quora/api/controller/QuestionController.class
+        quora-api/target/test-classes/
+        quora-db/target/maven-archiver/
+        quora-db/target/maven-status/
+        quora-db/target/quora-db.jar
+        quora-service/target/classes/com/upgrad/quora/service/business/QuestionBusinessService.class
+        quora-service/target/classes/com/upgrad/quora/service/business/UserAdminBusinessService.class
+        quora-service/target/classes/com/upgrad/quora/service/business/UserAuthenticationBusinessService.class
+        quora-service/target/classes/com/upgrad/quora/service/business/UserBusinessService.class
+        quora-service/target/classes/com/upgrad/quora/service/dao/
+        quora-service/target/classes/com/upgrad/quora/service/entity/
+        quora-service/target/maven-status/maven-compiler-plugin/testCompile/
