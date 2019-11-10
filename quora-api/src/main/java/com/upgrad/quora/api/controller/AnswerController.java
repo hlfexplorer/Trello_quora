@@ -41,6 +41,7 @@ public class AnswerController {
 
         AnswerEntity answerEntity = new AnswerEntity();
         AnswerEntity createdAnswer;
+        answerEntity.setAnswer(answerRequest.getAnswer());
         try {
             String[] bearerAccessToken = authorization.split("Bearer ");
             createdAnswer = ansBusinessService.createAnswer(answerEntity, bearerAccessToken[1],questionId);
@@ -48,7 +49,7 @@ public class AnswerController {
         catch (ArrayIndexOutOfBoundsException are){
             createdAnswer = ansBusinessService.createAnswer(answerEntity, authorization,questionId);
         }
-        answerEntity.setAnswer(answerRequest.getAnswer());
+
         AnswerResponse answerResponse = new AnswerResponse().id(createdAnswer.getUuid()).
                 status("ANSWER CREATED");
 
@@ -76,12 +77,11 @@ public class AnswerController {
                                                                 @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, AnswerNotFoundException {
 
         AnswerEntity updatedAnswer;
-        AnswerEntity answerEntity = ansBusinessService.getAnswerById(answerId);
         try {
             String[] accessToken = authorization.split("Bearer ");
-            updatedAnswer = ansBusinessService.updateAnswer(answerEntity,answerId, accessToken[1]);
+            updatedAnswer = ansBusinessService.updateAnswer(answerId, accessToken[1]);
         }catch(ArrayIndexOutOfBoundsException are) {
-            updatedAnswer = ansBusinessService.updateAnswer(answerEntity,answerId, authorization);
+            updatedAnswer = ansBusinessService.updateAnswer(answerId, authorization);
         }
         AnswerEditResponse answerEditResponse = new AnswerEditResponse().id(updatedAnswer.getUuid()).status("ANSWER EDITED");
         return new ResponseEntity<AnswerEditResponse>(answerEditResponse,HttpStatus.OK);
@@ -93,7 +93,7 @@ public class AnswerController {
 
        //UserAuthTokenEntity userAuthEntity = userBusinessService.getUser(authorization);
         ArrayList<AnswerEntity> andList;
-        ArrayList<AnswerDetailsResponse> list = null;
+        ArrayList<AnswerDetailsResponse> list = new ArrayList<>();
         try{
             String[] accessToken = authorization.split("Bearer ");
             andList = (ArrayList) ansBusinessService.getAllAnswers(questionId ,accessToken[1]);
